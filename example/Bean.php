@@ -31,4 +31,49 @@ reserve（）：将管道中处于ready状态的任务读取出来
 可以使用bury 方法将任务先放一边（例如发邮件，邮箱服务器挂掉），等待条件成熟再取出来
  */
 
+/*
+ * // 查看有多少个tube
+//var_export($pheanstalk->listTubes());
+
+// 在 put 之前预申明要使用的管道，如果管道不存在，即创建
+//$pheanstalk->useTube('test');
+
+//设置要监听的tube
+$pheanstalk->watch('test');
+
+//取消对默认tube的监听，可以省略
+$pheanstalk->ignore('default');
+
+//查看监听的tube列表
+var_export($pheanstalk->listTubesWatched());
+
+//查看test的tube当前的状态
+var_export($pheanstalk->statsTube('test'));
+ */
+
+/*
+ * // put 任务 方式一; 返回新 job 的任务标识，整型值；
+$pheanstalk->useTube('test')->put(
+    'hello, beanstalk, i am job 1', // 任务内容
+    23, // 任务的优先级, 默认为 1024
+    0, // 不等待直接放到ready队列中.
+    60 // 处理任务的时间(单位为秒)
+);
+
+// put 任务 方式二； 返回新 job 的任务标识，整型值；
+$pheanstalk->putInTube(
+    'test', // 管道名称
+    'hello, beanstalk, i am job 2', // 任务内容
+    23, // 任务的优先级, 默认为 1024
+    0, // 不等待直接放到ready队列中. 如值为 60 表示 60秒；
+    60 // 处理任务的时间(单位为秒)
+);
+
+// 给管道里所有新任务设置延迟
+$pheanstalk->pauseTube('test', 30);
+
+// 取消管道延迟
+$pheanstalk->resumeTube('test');
+ */
+
 // Beanstalkd web端管理工具 https://github.com/mnapoli/phpBeanstalkdAdmin

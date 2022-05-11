@@ -84,6 +84,24 @@ var_dump($bean->ph->delete($job)); // 从管道中删除任务*/
 
 // 查看指定管道中的某一个任务情况
 //var_dump($bean->ph->statsJob($job));
+/*
+ *    'id' => '1', // job id
+   'tube' => 'test', // job 所在的管道
+   'state' => 'reserved', // job 当前的状态
+   'pri' => '1024', // job 的优先级
+   'age' => '5222', // 自 job 创建时间为止 单位：秒
+   'delay' => '0',
+   'ttr' => '60', // time to run
+   'time-left' => '58', // 仅在job状态为reserved或者delayed时有意义，当job状态为reserved时表示剩余的超时时间
+   'file' => '2', // 表示包含此job的binlog序号，如果没有开启它将为0
+   'reserves' => '10', // 表示job被reserved的次数
+   'timeouts' => '0', // 表示job处理的超时时间
+   'releases' => '1', // 表示job被released的次数
+   'buries' => '0', // 表示job被buried的次数
+   'kicks' => '0', // 表示job被kiced的次数
+
+ */
+
 
 // --------- 生产 ----------
 // put
