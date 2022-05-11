@@ -29,5 +29,6 @@ reserve（）：将管道中处于ready状态的任务读取出来
 可以使用delete 方法删除任务
 可以使用release 方法将任务放回ready状态
 可以使用bury 方法将任务先放一边（例如发邮件，邮箱服务器挂掉），等待条件成熟再取出来
-
  */
+
+// Beanstalkd web端管理工具 https://github.com/mnapoli/phpBeanstalkdAdmin
