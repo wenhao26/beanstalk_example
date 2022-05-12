@@ -14,11 +14,12 @@ $redis = new RedisUtils([
 
 $timeout = 5;
 while (true) {
-    if ($timeout > 100) {
+    if ($timeout > 10) {
         echo 'End...';
         break;
     }
-    $redis->set('ex_key_' . $timeout, '12345678', $timeout);
+    //$redis->set('ex_key_' . $timeout, '12345678', $timeout);
+    $redis->setEx("ex_key_{$timeout}", $timeout,'12345678');
     echo 'set timeout=' . $timeout . "\n";
     $timeout += 5;
     sleep(1);
