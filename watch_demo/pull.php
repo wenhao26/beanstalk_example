@@ -26,6 +26,4 @@ $redis->psubscribe(['__keyevent@0__:expired'], function ($redis, $pattern, $chan
     echo "Payload: $msg\n\n";
 
     // keyCallbackFunc为订阅事件后的回调函数，写业务处理逻辑部分，后续业务处理
-    $value = $redis->get($msg);
-    var_dump($value);
 }*/
