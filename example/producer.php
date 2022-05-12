@@ -63,16 +63,26 @@ $bean = new Bean('192.168.7.206');
 //var_dump($bean->ph->listTubes());
 
 // 向队列添加一个任务
-$jobId = $bean->ph->useTube('testtube')->put(
+while (true) {
+    $jobId = $bean->ph->useTube('testtube')->put(
+        json_encode(['test' => time()]), // 任务数据
+        Pheanstalk::DEFAULT_PRIORITY, // 优先级
+        0, // 延迟时间，单位：秒
+        60 // beanstalk将在60秒后重试作业
+    );
+    var_dump($jobId);
+    usleep(50);
+}
+/*$jobId = $bean->ph->useTube('testtube')->put(
     json_encode(['test' => time()]), // 任务数据
     Pheanstalk::DEFAULT_PRIORITY, // 优先级
     2, // 延迟时间，单位：秒
     60 // beanstalk将在60秒后重试作业
 );
-var_dump($jobId);
+var_dump($jobId);*/
 
 // 查看管道的信息
-var_dump($bean->ph->statsTube('testtube'));
+//var_dump($bean->ph->statsTube('testtube'));
 
 // 查看指定管道中某个任务的情况
 /*$job = $bean->ph->watch('testtube')->reserve(); // 从管道中取出任务（消费者）
