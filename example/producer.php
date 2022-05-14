@@ -63,16 +63,25 @@ $bean = new Bean('192.168.7.206');
 //var_dump($bean->ph->listTubes());
 
 // 向队列添加一个任务
+$delayTime = 2;
 while (true) {
+    if ($delayTime > 20) {
+        break;
+    }
+
     $jobId = $bean->ph->useTube('testtube')->put(
-        json_encode(['test' => time()]), // 任务数据
+        json_encode(['test' => "延迟{$delayTime}秒执行"], JSON_UNESCAPED_UNICODE), // 任务数据
         Pheanstalk::DEFAULT_PRIORITY, // 优先级
-        0, // 延迟时间，单位：秒
+        $delayTime, // 延迟时间，单位：秒
         60 // beanstalk将在60秒后重试作业
     );
     var_dump($jobId);
-    usleep(50);
+    $delayTime += 2;
+    usleep(1000);
 }
+echo '任务执行完成...';
+die;
+
 /*$jobId = $bean->ph->useTube('testtube')->put(
     json_encode(['test' => time()]), // 任务数据
     Pheanstalk::DEFAULT_PRIORITY, // 优先级
