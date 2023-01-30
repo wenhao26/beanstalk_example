@@ -1,7 +1,8 @@
 <?php
 require_once 'Bean.php';
 
-$bean = new Bean('192.168.7.206');
+//$bean = new Bean('192.168.7.206');
+$bean = new Bean('127.0.0.1');
 
 $bean->ph->watch('testtube');
 
