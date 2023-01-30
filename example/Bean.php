@@ -7,6 +7,19 @@ error_reporting(E_ALL);
 
 require_once '../vendor/autoload.php';
 
+/*
+ * https://github.com/beanstalkd/beanstalkd
+ *
+ * 安装
+ * 1、git clone https://github.com/beanstalkd/beanstalkd
+ * 2、make
+ *
+ * 启动
+ * 1、./beanstalkd
+ * 2、./beanstalkd -l 127.0.0.1 -p 11301 -b /data/applogs/binstalkd/binlogs >/dev/null 2>&1 &
+ *
+ */
+
 class Bean
 {
     public $ph;
