@@ -4,7 +4,8 @@ use Pheanstalk\Pheanstalk;
 
 require_once 'Bean.php';
 
-$bean = new Bean('192.168.7.206');
+//$bean = new Bean('192.168.7.206');
+$bean = new Bean('127.0.0.1');
 
 // 查看状态信息
 //var_dump($bean->ph->stats());
