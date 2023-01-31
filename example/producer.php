@@ -66,7 +66,7 @@ $bean = new Bean('127.0.0.1');
 // 向队列添加一个任务
 $delayTime = 2;
 while (true) {
-    if ($delayTime > 20) {
+    if ($delayTime > 240) {
         break;
     }
 
